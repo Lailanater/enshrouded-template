@@ -1,0 +1,18 @@
+services:
+  enshrouded:
+    container_name: enshrouded
+    image: lailanater/enshrouded
+    ports:
+      - 15636:15636/tcp
+      - 15637:15637/tcp
+      - 15636:15636/udp
+      - 15637:15637/udp
+    volumes:
+      - "enshrouded:/home/steamuser/enshrouded"
+      - "./data/saves:/home/steamuser/enshrouded/savegame:z"
+      - "./data/config:/home/steamuser/enshrouded/json:z"
+      - "./data/logs:/home/steamuser/enshrouded/logs:z"
+
+volumes:
+  enshrouded:
+    name: enshrouded

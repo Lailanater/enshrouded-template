@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -d $PWD/data ]; then
+  rm -rf $PWD/data/*
+fi
+
+read -p "Would you like to delete the volume the server is installed on? [y/N]: " DELETE_GAME_VOLUME
+if [[ ($DELETE_GAME_VOLUME == 'y' || $DELETE_GAME_VOLUME == 'Y') ]] && (docker volume ls | grep -q enshrouded); then
+  docker volume rm enshrouded >/dev/null
+fi
