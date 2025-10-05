@@ -7,12 +7,28 @@ services:
       - 15637:15637/tcp
       - 15636:15636/udp
       - 15637:15637/udp
+    environment:
+      ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      FRIEND_PASSWORD_FILE: /run/secrets/friend_password
+      GUEST_PASSWORD_FILE: /run/secrets/guest_password
+    secrets:
+      - admin_password
+      - friend_password
+      - guest_password
     volumes:
       - "enshrouded:/home/steamuser/enshrouded"
       - "./data/saves:/home/steamuser/enshrouded/savegame:z"
-      - "./data/config:/home/steamuser/enshrouded/json:z"
+      - "./data/config:/home/steamuser/enshrouded/templates:z"
       - "./data/logs:/home/steamuser/enshrouded/logs:z"
 
 volumes:
   enshrouded:
     name: enshrouded
+
+secrets:
+  admin_password:
+    file: ./secrets/admin_password.txt
+  friend_password:
+    file: ./secrets/friend_password.txt
+  guest_password:
+    file: ./secrets/guest_password.txt
