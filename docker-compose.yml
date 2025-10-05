@@ -20,6 +20,7 @@ services:
       - "./data/saves:/home/steamuser/enshrouded/savegame:z"
       - "./data/config:/home/steamuser/enshrouded/templates:z"
       - "./data/logs:/home/steamuser/enshrouded/logs:z"
+    restart: "unless-stopped"
 
 volumes:
   enshrouded:
